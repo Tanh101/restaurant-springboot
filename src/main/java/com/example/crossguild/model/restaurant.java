@@ -29,12 +29,15 @@ public class Restaurant {
     private String name;
 
     @Column(nullable = false, length = 256)
-    private String discription;
+    private String description;
 
     @Column(nullable = false, length = 256)
     private String address;
 
     @Column(nullable = false, unique = true, length = 20)
     private String phoneNumber;
+
+    @Column(nullable = false, length = 512)
+    private String image;
 
 }
