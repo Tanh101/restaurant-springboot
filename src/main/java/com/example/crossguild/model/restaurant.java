@@ -19,7 +19,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "restaurant")
-public class restaurant {
+public class Restaurant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +34,7 @@ public class restaurant {
     @Column(nullable = false, length = 256)
     private String address;
 
-    @Column(nullable = false, unique = true, length  = 20)
+    @Column(nullable = false, unique = true, length = 20)
     private String phoneNumber;
 
 }
