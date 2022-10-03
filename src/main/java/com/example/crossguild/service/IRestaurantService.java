@@ -1,5 +1,7 @@
 package com.example.crossguild.service;
 
-public interface IRestaurantService extends IService{
+import com.example.crossguild.model.Restaurant;
+
+public interface IRestaurantService extends IService<Restaurant, Long> {
     
 }

@@ -3,38 +3,46 @@ package com.example.crossguild.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.crossguild.model.Restaurant;
+import com.example.crossguild.repo.RestaurantRepository;
 import com.example.crossguild.service.IRestaurantService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-public class RestaurantServiceImpl implements IRestaurantService{
+
+@Service
+public class RestaurantServiceImpl implements IRestaurantService {
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
 
     @Override
     public List getAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return restaurantRepository.findAll();
     }
 
     @Override
-    public Optional getById(Object id) {
-        // TODO Auto-generated method stub
-        return null;
+    public Optional<Restaurant> getById(Long id) {
+        return Optional.ofNullable(restaurantRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Restaurant by " + id + " can not found")));
     }
 
     @Override
-    public Object save(Object entity) {
-        // TODO Auto-generated method stub
-        return null;
+    public Restaurant save(Restaurant entity) {
+        return restaurantRepository.save(entity);
     }
 
     @Override
-    public Object update(Object entity) {
-        // TODO Auto-generated method stub
-        return null;
+    public Restaurant update(Restaurant entity) {
+        return restaurantRepository.save(entity);
     }
 
     @Override
-    public void deleteById(Object id) {
-        // TODO Auto-generated method stub
-        
+    public void deleteById(Long id) {
+         restaurantRepository.deleteById(id);
     }
-    
+
+
+
 }
