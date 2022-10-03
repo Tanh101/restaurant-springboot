@@ -18,7 +18,7 @@ public class RestaurantServiceImpl implements IRestaurantService {
     private RestaurantRepository restaurantRepository;
 
     @Override
-    public List getAll() {
+    public List<Restaurant> getAll() {
         return restaurantRepository.findAll();
     }
 
