@@ -3,38 +3,44 @@ package com.example.crossguild.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.crossguild.model.User;
+import com.example.crossguild.repo.UserRepository;
 import com.example.crossguild.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements IUserService{
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List getAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
-    public Optional getById(Object id) {
-        // TODO Auto-generated method stub
-        return null;
+    public Optional<User> getById(Long id) {
+        return Optional.ofNullable(userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User by id " + id + " was not found")));
     }
 
     @Override
-    public Object save(Object entity) {
-        // TODO Auto-generated method stub
-        return null;
+    public User save(User entity) {
+        return userRepository.save(entity);
     }
 
     @Override
-    public Object update(Object entity) {
-        // TODO Auto-generated method stub
-        return null;
+    public User update(User entity) {
+        return userRepository.save(entity);
     }
 
     @Override
-    public void deleteById(Object id) {
-        // TODO Auto-generated method stub
-        
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
-    
+
+
 }
