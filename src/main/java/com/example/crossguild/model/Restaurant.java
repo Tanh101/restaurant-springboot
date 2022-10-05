@@ -40,4 +40,7 @@ public class Restaurant {
     @Column(nullable = false, length = 512)
     private String image;
 
+    @Column(nullable = false)
+    private int rate;
+
 }

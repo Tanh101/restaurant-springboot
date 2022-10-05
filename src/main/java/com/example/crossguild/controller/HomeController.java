@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/home")
@@ -14,14 +16,12 @@ public class HomeController {
     private RestaurantServiceImpl restaurantService;
 
     @PostMapping("/add")
-    public String add(@RequestBody Restaurant restaurant) {
-        restaurantService.save(restaurant);
-        return "A new restaurant has been added";
+    public Restaurant newRestaurant(@RequestBody Restaurant restaurant) {
+        return restaurantService.save(restaurant);
     }
 
     @GetMapping("/restaurant")
-    public String findAll(){
-        restaurantService.getAll();
-        return "aaa";
+    public List<Restaurant> findAll(){
+        return restaurantService.getAll();
     }
 }
